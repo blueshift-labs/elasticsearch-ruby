@@ -40,9 +40,9 @@ module Elasticsearch
           @sniffer     = options[:sniffer_class] ? options[:sniffer_class].new(self) : Sniffer.new(self)
           @counter     = 0
           @last_request_at = Time.now
-          @reload_after    = options[:reload_connections].is_a?(Fixnum) ? options[:reload_connections] : DEFAULT_RELOAD_AFTER
+          @reload_after    = options[:reload_connections].is_a?(Integer) ? options[:reload_connections] : DEFAULT_RELOAD_AFTER
           @resurrect_after = options[:resurrect_after] || DEFAULT_RESURRECT_AFTER
-          @max_retries     = options[:retry_on_failure].is_a?(Fixnum)   ? options[:retry_on_failure]   : DEFAULT_MAX_RETRIES
+          @max_retries     = options[:retry_on_failure].is_a?(Integer)   ? options[:retry_on_failure]   : DEFAULT_MAX_RETRIES
         end
 
         # Returns a connection from the connection pool by delegating to {Connections::Collection#get_connection}.
